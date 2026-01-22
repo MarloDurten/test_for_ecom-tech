@@ -20,16 +20,15 @@ dataf = pd.DataFrame({
 
 dataf['event_time'] = pd.to_datetime(dataf['date']) + pd.to_timedelta(rng.random(N) * 86400, unit='s')
 
+dataf['date'] = pd.to_datetime(dataf['date']).dt.date
+dataf['event_time'] = pd.to_datetime(dataf['event_time'])
+
 print(dataf.head())
 
 client = Client('localhost', port=9000)
 
 client.insert_dataframe('INSERT INTO priemniki VALUES', dataf)
 
-dataf['date'] = pd.to_datetime(dataf['date']).dt.date
-dataf['event_time'] = pd.to_datetime(dataf['event_time'])
-
-client.insert_dataframe('INSERT INTO priemniki VALUES', dataf)
-
 client.disconnect()
+
 
