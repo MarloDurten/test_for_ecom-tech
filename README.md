@@ -4,12 +4,11 @@ pip install requirments.txt
 
 2. Установить Docker 
 
-3. Из раздела DockerHUB установить image с устаноленным ClickHouse\ в PowerShell вставить комманды 
+3. Из раздела DockerHUB установить image с устаноленным ClickHouse\ в PowerShell вставить комманду 
 
-# Скачиваем нужный образ
 docker pull clickhouse/clickhouse-server
 
-4. Поднять контейнер комманадми 
+4. Поднять контейнер комманадой 
 
 docker run -d --name clickhouse-server -p 9000:9000 -p 8123:8123 --ulimit nofile=262144:262144 -e CLICKHOUSE_PASSWORD="" clickhouse/clickhouse-server
 
